@@ -6,9 +6,15 @@ import BigText from 'ink-big-text';
 import items from '../utils/constants.js';
 import Goodbye from './goodbye.js';
 import SignUp from './signUp.js';
+import SignIn from './signIn.js';
+import open from 'open';
 
 const Home = () => {
 	const [itemValue, setItemValue] = useState('');
+
+  if (itemValue === 'about-app') {
+    open('https://github.com/N0tR1CH');
+  }
 
 	if (itemValue === 'exit-app') {
 		return <Goodbye />;
@@ -19,6 +25,7 @@ const Home = () => {
 				borderStyle="double"
 				borderColor="magenta"
 				padding={2}
+        height={25}
 			>
 				<Box justifyContent="center" alignItems='center'>
 					<Gradient name="retro">
@@ -32,6 +39,7 @@ const Home = () => {
 					/>
 				</Box>
         {itemValue === 'sign-up' && <SignUp />}
+        {itemValue === 'sign-in' && <SignIn />}
 			</Box>
 		);
 	}
