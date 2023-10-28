@@ -19,11 +19,12 @@ const Navbar = () => {
 			justifyContent="space-around"
 			alignItems="center"
 			height="15%"
+      borderColor={isFocused ? 'green' : 'white'}
 		>
 			<Text bold color="green">
 				Chat-Cli
 			</Text>
-			<Text>k_stanowski</Text>
+			<Text color="cyan">k_stanowski</Text>
 			<Select
 				options={[
 					{
