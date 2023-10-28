@@ -7,6 +7,7 @@ const Navbar = () => {
 
 	useEffect(() => {
     if(isFocused) {
+      console.clear();
       console.log('navbar focused');
     }
 	}, [isFocused]);

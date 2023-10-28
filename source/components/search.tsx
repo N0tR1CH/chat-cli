@@ -7,12 +7,13 @@ const Search = () => {
 
 	useEffect(() => {
     if(isFocused) {
+      console.clear();
       console.log('search focused');
     }
 	}, [isFocused]);
 
   return (
-    <Box borderStyle="bold" flexDirection='column'>
+    <Box borderStyle="bold" flexDirection='column' height="15%">
       <TextInput
         placeholder="Search..."
         isDisabled={!isFocused}
