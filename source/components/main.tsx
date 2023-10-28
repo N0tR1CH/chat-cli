@@ -1,5 +1,6 @@
 import React from "react";
 import { Box } from "ink";
+import Sidebar from "./sidebar.js";
 
 const Main = () => {
   return (
@@ -7,10 +8,10 @@ const Main = () => {
       flexDirection="row"
       borderStyle="double"
       borderColor="magenta"
-      padding={2}
       height={25}
+      paddingLeft={1}
     >
-
+      <Sidebar />
     </Box>
   );
 }
