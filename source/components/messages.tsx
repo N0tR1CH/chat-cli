@@ -1,10 +1,20 @@
 import React from 'react';
-import {Box, Text} from 'ink';
+import {Box, Text, useFocus} from 'ink';
 import {Select} from '@inkjs/ui';
+import {useEffect} from 'react';
 
 const Messages = () => {
+	const {isFocused} = useFocus();
+
+	useEffect(() => {
+    if(isFocused) {
+      console.clear();
+      console.log('Messages focused');
+    }
+	}, [isFocused]);
+
 	return (
-		<Box height="80%" width="100%" borderStyle="bold" flexDirection="row" padding={1}>
+		<Box height="80%" width="100%" borderStyle="bold" flexDirection="row" padding={1} borderColor={isFocused ? "green" : "white"}>
 			<Select
 				options={[
 					{
@@ -72,20 +82,10 @@ const Messages = () => {
 						value: 'test16',
 					},
 				]}
+        isDisabled={!isFocused}
 			/>
-			<Box padding={1} borderStyle="bold">
+			<Box marginLeft={1} padding={1} borderStyle="bold" width="100%">
 				<Text>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
-					voluptatem dicta nemo sint consectetur tenetur aut, quia cupiditate
-					cumque ipsum velit quae quod est eum aperiam, commodi obcaecati
-					pariatur. Corrupti dolor, itaque at dolore quo molestias consectetur
-					quasi veniam aut saepe reiciendis tempore debitis sed quia aliquam
-					nisi consequuntur sunt tempora necessitatibus nihil similique iure in
-					architecto. Nesciunt libero ab pariatur, necessitatibus velit debitis
-					a minus dolore vero sapiente dolores, autem vitae, quam ea accusamus
-					delectus. Molestiae quibusdam totam sequi eaque nemo cumque omnis?
-					Sapiente nostrum facilis fugiat atque numquam fuga deserunt
-					voluptates, nisi fugit quia ducimus eveniet aspernatur odit.
 				</Text>
 			</Box>
 		</Box>

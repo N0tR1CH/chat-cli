@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, Text} from 'ink';
 import Messages from './messages.js';
+import Input from './input.js';
 
 const Chat = () => {
   return (
@@ -10,6 +11,7 @@ const Chat = () => {
         <Text bold color="magentaBright">[mariusz_brighton]</Text>
       </Box>
       <Messages />
+      <Input />
     </Box>
   );
 };
