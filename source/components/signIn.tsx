@@ -1,20 +1,48 @@
 import React, {useState} from 'react';
 import {Box, Text} from 'ink';
-import {ConfirmInput, EmailInput, PasswordInput } from '@inkjs/ui';
+import {
+	ConfirmInput,
+	EmailInput,
+	PasswordInput,
+	Spinner,
+	StatusMessage,
+} from '@inkjs/ui';
 import BigText from 'ink-big-text';
 import Gradient from 'ink-gradient';
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {auth} from '../utils/firebase.js';
 
-const SignIn = () => {
+interface SignInProps {
+  currentUser: any;
+  setCurrentUser: any;
+}
+
+const SignIn = ({currentUser, setCurrentUser}: SignInProps) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [activeInput, setActiveInput] = useState('email');
 	const [reRender, setReRender] = useState(false);
+	const [error, setError] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState(false);
 
-  const handleLogin = () => {
-    console.log("I am handling login!");
-  }
+	const handleLogin = async () => {
+		console.log('I am handling login!');
 
-	if (reRender) {
+		try {
+			setLoading(true);
+			await signInWithEmailAndPassword(auth, email, password);
+			setLoading(false);
+			setSuccess(true);
+      setCurrentUser(email);
+      console.log(currentUser);
+		} catch (err) {
+			setError(true);
+			setLoading(false);
+		}
+	};
+
+	if (reRender || success) {
 		return null;
 	} else {
 		return (
@@ -24,9 +52,9 @@ const SignIn = () => {
 				marginLeft={6}
 				gap={1}
 			>
-                <Gradient name="retro">
-                    <BigText text="Sign Up" font="tiny" />
-                </Gradient>
+				<Gradient name="retro">
+					<BigText text="Sign In" font="tiny" />
+				</Gradient>
 				<Box flexDirection="column">
 					<EmailInput
 						isDisabled={activeInput !== 'email'}
@@ -49,7 +77,7 @@ const SignIn = () => {
 				</Box>
 				{activeInput === 'confirm' && (
 					<Box flexDirection="column">
-            <Text>Do you want to continue?</Text>
+						<Text>Do you want to continue?</Text>
 						<ConfirmInput
 							isDisabled={activeInput !== 'confirm'}
 							onConfirm={() => handleLogin()}
@@ -57,6 +85,12 @@ const SignIn = () => {
 						/>
 					</Box>
 				)}
+				{error && (
+					<StatusMessage variant="error">
+						Failed to login user!
+					</StatusMessage>
+				)}
+				{loading && <Spinner type="dots" label="Signing in user..." />}
 			</Box>
 		);
 	}

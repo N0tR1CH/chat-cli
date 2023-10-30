@@ -4,12 +4,16 @@ import {Box} from 'ink';
 import Search from './search.js';
 import Chats from './chats.js';
 
-const Sidebar = () => {
+interface SidebarProps {
+	currentUser: string;
+}
+
+const Sidebar = ({currentUser}: SidebarProps) => {
 	return (
 		<Box flexDirection="column" width="25%">
-			<Navbar/>
-			<Search/>
-      <Chats/>
+			<Navbar currentUser={currentUser} />
+			<Search currentUser={currentUser} />
+			<Chats currentUser={currentUser} />
 		</Box>
 	);
 };

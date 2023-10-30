@@ -2,7 +2,11 @@ import React, {useEffect} from 'react';
 import {Box, useFocus} from 'ink';
 import { Select } from '@inkjs/ui';
 
-const Chats = () => {
+interface ChatsProps {
+  currentUser: string;
+}
+
+const Chats = ({currentUser} : ChatsProps) => {
 	const {isFocused} = useFocus();
 
 	useEffect(() => {
@@ -21,15 +25,15 @@ const Chats = () => {
       <Select
         options={[
           {
-            label: 'mariusz_brighton',
+            label: currentUser,
             value: 'test',
           },
           {
-            label: 'kopyto_borka',
+            label: 'user2',
             value: 'test2',
           },
           {
-            label: 'najman',
+            label: 'user3',
             value: 'test3',
           },
         ]}

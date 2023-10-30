@@ -3,7 +3,11 @@ import { Box } from "ink";
 import Sidebar from "./sidebar.js";
 import Chat from "./chat.js";
 
-const Main = () => {
+interface MainProps {
+  currentUser: string;
+}
+
+const Main = ({currentUser}: MainProps) => {
   useEffect(() => {
     console.log("Please, press tab key to switch between focused elements :)");
   }, []);
@@ -16,7 +20,7 @@ const Main = () => {
       height={25}
       paddingLeft={1}
     >
-      <Sidebar />
+      <Sidebar currentUser={currentUser}/>
       <Chat />
     </Box>
   );
