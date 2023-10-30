@@ -8,7 +8,7 @@ const Chat = () => {
     <Box borderStyle="bold" width="75%" flexDirection='column'>
       <Box height="15%" width="100%" borderStyle="bold" justifyContent='center' alignItems='center'>
         <Text>Conversation with: </Text>
-        <Text bold color="magentaBright">[mariusz_brighton]</Text>
+        <Text bold color="magentaBright">[test]</Text>
       </Box>
       <Messages />
       <Input />
