@@ -6,18 +6,12 @@ import {collection, query, where, getDocs} from 'firebase/firestore';
 
 interface NavbarProps {
 	currentUser: string;
+	setCurrentUser: any;
 }
 
-const Navbar = ({currentUser}: NavbarProps) => {
+const Navbar = ({currentUser, setCurrentUser}: NavbarProps) => {
 	const {isFocused} = useFocus();
 	const [currentUserDisplayName, setCurrentUserDisplayName] = useState('');
-
-	useEffect(() => {
-		if (isFocused) {
-			console.clear();
-			console.log('navbar focused');
-		}
-	}, [isFocused]);
 
 	useEffect(() => {
 		const getUser = async () => {
@@ -27,10 +21,6 @@ const Navbar = ({currentUser}: NavbarProps) => {
 			);
 
 			const querySnapshot = await getDocs(q);
-
-			if (querySnapshot.empty) {
-				console.log('No such document!');
-			}
 
 			querySnapshot.forEach(doc => {
 				setCurrentUserDisplayName(doc.data()['displayName']);
@@ -61,6 +51,7 @@ const Navbar = ({currentUser}: NavbarProps) => {
 					},
 				]}
 				isDisabled={!isFocused}
+				onChange={_ => setCurrentUser('none')}
 			/>
 		</Box>
 	);

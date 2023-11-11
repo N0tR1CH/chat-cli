@@ -1,17 +1,10 @@
 import { TextInput } from '@inkjs/ui';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Box, useFocus } from 'ink';
 
 const Input = () => {
   const [_, setValue] = useState('');
 	const {isFocused} = useFocus();
-
-	useEffect(() => {
-    if(isFocused) {
-      console.clear();
-      console.log('chats focused');
-    }
-	}, [isFocused]);
 
   return (
     <Box marginLeft={1}>

@@ -1,16 +1,8 @@
 import React from 'react';
 import {Box, Text, useFocus} from 'ink';
-import {useEffect} from 'react';
 
 const Messages = () => {
 	const {isFocused} = useFocus();
-
-	useEffect(() => {
-		if (isFocused) {
-			console.clear();
-			console.log('Messages focused');
-		}
-	}, [isFocused]);
 
 	return (
 		<Box

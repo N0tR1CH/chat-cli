@@ -21,7 +21,7 @@ const Home = () => {
 	if (itemValue === 'exit-app') {
 		return <Goodbye />;
 	} else if (currentUser !== 'none') {
-		return <Main currentUser={currentUser}/>
+		return <Main currentUser={currentUser} setCurrentUser={setCurrentUser}/>
 	} else {
 		return (
 			<Box

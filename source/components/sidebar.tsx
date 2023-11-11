@@ -6,12 +6,13 @@ import Chats from './chats.js';
 
 interface SidebarProps {
 	currentUser: string;
+	setCurrentUser: any;
 }
 
-const Sidebar = ({currentUser}: SidebarProps) => {
+const Sidebar = ({currentUser, setCurrentUser}: SidebarProps) => {
 	return (
 		<Box flexDirection="column" width="25%">
-			<Navbar currentUser={currentUser} />
+			<Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
 			<Search currentUser={currentUser} />
 			<Chats currentUser={currentUser} />
 		</Box>

@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box } from "ink";
 import Sidebar from "./sidebar.js";
 import Chat from "./chat.js";
 
 interface MainProps {
   currentUser: string;
+  setCurrentUser: any;
 }
 
-const Main = ({currentUser}: MainProps) => {
-  useEffect(() => {
-    console.log("Please, press tab key to switch between focused elements :)");
-  }, []);
-
+const Main = ({currentUser, setCurrentUser}: MainProps) => {
   return (
     <Box
       flexDirection="row"
@@ -20,7 +17,7 @@ const Main = ({currentUser}: MainProps) => {
       height={25}
       paddingLeft={1}
     >
-      <Sidebar currentUser={currentUser}/>
+      <Sidebar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Chat />
     </Box>
   );

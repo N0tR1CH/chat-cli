@@ -18,8 +18,6 @@ const SignUp = () => {
 	const [loading, setLoading] = useState(false);
 
 	const handleRegistration = async () => {
-		console.log('I am handling registration!');
-
 		try {
 			setLoading(true);
 			await createUserWithEmailAndPassword(auth, email, password);
@@ -34,7 +32,6 @@ const SignUp = () => {
 			setLoading(false);
 			setSuccess(true);
 		} catch (err) {
-			console.log(err);
 			setError(true);
 		}
 	};

@@ -17,7 +17,7 @@ interface SignInProps {
   setCurrentUser: any;
 }
 
-const SignIn = ({currentUser, setCurrentUser}: SignInProps) => {
+const SignIn = ({setCurrentUser}: SignInProps) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [activeInput, setActiveInput] = useState('email');
@@ -27,15 +27,12 @@ const SignIn = ({currentUser, setCurrentUser}: SignInProps) => {
 	const [success, setSuccess] = useState(false);
 
 	const handleLogin = async () => {
-		console.log('I am handling login!');
-
 		try {
 			setLoading(true);
 			await signInWithEmailAndPassword(auth, email, password);
 			setLoading(false);
 			setSuccess(true);
       setCurrentUser(email);
-      console.log(currentUser);
 		} catch (err) {
 			setError(true);
 			setLoading(false);
