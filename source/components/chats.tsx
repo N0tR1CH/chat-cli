@@ -6,9 +6,10 @@ import {db} from '../utils/firebase.js';
 
 interface ChatsProps {
 	currentUser: string;
+	setSelectedUser: any;
 }
 
-const Chats = ({currentUser}: ChatsProps) => {
+const Chats = ({currentUser, setSelectedUser}: ChatsProps) => {
 	const {isFocused} = useFocus();
 	const [items, setItems] = useState(Array<any>);
 
@@ -27,7 +28,7 @@ const Chats = ({currentUser}: ChatsProps) => {
 				if (value['userInfo']['displayName'] !== '') {
 					userInfoArray.push({
 						label: value['userInfo']['displayName'],
-						value: value['userInfo']['email'],
+						value: value['userInfo']['displayName'],
 					});
 				}
 			}
@@ -52,6 +53,8 @@ const Chats = ({currentUser}: ChatsProps) => {
 	const handleGetChats = async (value: string) => {
 		if (value === 'getChats') {
 			await fetchUserChats();
+		} else {
+			setSelectedUser(value);
 		}
 	};
 
